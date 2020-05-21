@@ -1,0 +1,212 @@
+$color-dark: #333;
+$color-black: #000;
+$color-white: #fff;
+$color-grey: #ececec;
+$color-orange: #efa536;
+$color-red: #e03838;
+$color-green: #22b122;
+
+$trans: 0.2s ease-in;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+body {
+
+    img {
+        max-width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        letter-spacing: 1px;
+        cursor: pointer;
+    }
+}
+
+#all-elem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    min-height: 100vh;
+
+    >h1 {
+        padding: 20px;
+        font-size: 42px;
+        color: $color-dark;
+    }
+
+    .field {
+        margin: 15px auto;
+        max-width: 600px;
+        width: 100%;
+
+        #joke-text {
+            padding: 12px 20px;
+            width: inherit;
+            min-height: 100px;
+            font-size: 16px;
+            color: $color-dark;
+            background-color: #ececec;
+            border: none;
+            resize: vertical;
+        }
+    }
+
+    .btns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 0 15px;
+        max-width: 280px;
+        width: 100%;
+
+        >button {
+            padding: 10px 5px;
+            min-width: 110px;
+            text-transform: uppercase;
+            color: $color-white;
+            background-color: $color-dark;
+            border: none;
+            transition: background-color $trans;
+
+            &:hover {
+                background-color: $color-orange;
+            }
+        }
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 500px;
+        width: 100%;
+
+        .clear-all {
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            color: $color-white;
+            background-color: $color-red;
+            border: none;
+            transition: background-color $trans;
+
+            &:hover {
+                background-color: darken($color-red, 15);
+            }
+        }
+
+        #joke-list {
+            width: 100%;
+            list-style: none;
+
+            .new-li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 5px;
+                background-color: $color-grey;
+                transition: background-color $trans;
+
+                .joke-in-list {
+                    flex: 8;
+                    position: relative;
+                    padding: 10px 15px;
+                    color: $color-white;
+                    background-color: $color-grey;
+                    border: none;
+                    transition: background-color $trans;
+
+                    &:disabled {
+                        color: $color-dark;
+                    }
+                }
+
+                .joke-actions {
+                    flex: 1;
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: 5px;
+
+                    >button {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin: 0 2px;
+                        padding: 5px;
+                        width: 22px;
+                        height: 22px;
+                        font-size: 12px;
+                        line-height: 0;
+                        letter-spacing: 0;
+                        color: $color-white;
+                        border: none;
+                        border-radius: 50%;
+                        transition: background-color $trans;
+
+                        &.edit {
+                            background-color: $color-orange;
+
+                            &:hover {
+                                background-color: darken($color-orange, 15);
+                            }
+                        }
+
+                        &.save {
+                            display: none;
+                            background-color: $color-green;
+
+                            &:hover {
+                                background-color: darken($color-green, 15);
+                            }
+                        }
+
+                        &.x-mark {
+                            background-color: $color-red;
+
+                            &:hover {
+                                background-color: darken($color-red, 15);
+                            }
+                        }
+                    }
+
+                    &.save-actions {
+
+                        >button.edit {
+                            display: none;
+                        }
+
+                        >button.save {
+                            display: flex;
+                        }
+                    }
+                }
+
+                &.editing {
+                    background-color: $color-dark;
+
+                    .joke-in-list {
+                        background-color: $color-dark;
+                    }
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
